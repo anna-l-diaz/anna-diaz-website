@@ -39,11 +39,39 @@ Your connected Cloudflare Pages project will deploy automatically.
 ## Personalization checklist
 
 - The portrait in `assets/anna-diaz-portrait.jpg` is the user-supplied headshot. To change it later, replace that file with another JPG of the same name.
-- Add your real professional email and LinkedIn URL in `contact.html` once you choose to publish them.
+- Your LinkedIn link is already added. Do not publish an email address in the website files.
 - Writing topics and project concepts are labeled honestly as in progress or proposed; do not present them as completed case studies until ready.
-- SCORE and Catchafire are mentioned as organizations being explored, not completed affiliations.
+- No specific volunteer organizations are named.
 - Review your employer's communications and conflict-of-interest policies before publishing employer-related or outside-advisory content.
 
 ## Static hosting
 
 Works with Cloudflare Pages, GitHub Pages, Netlify, or any static web host. No build command is required. Use `.` as the Cloudflare Pages output directory when deploying from the repository root.
+
+## New in this version
+
+- A low-contrast mountain horizon at the bottom of the homepage navigation panels (`assets/mountain-horizon.svg`). This is an abstract landscape motif, not a photograph.
+- Italics reduced to just the main homepage headline.
+- Removed references to specific volunteer organizations from public-facing pages.
+- A redesigned contact page with LinkedIn and a third-party hosted inquiry form that does not expose your email address.
+
+### REQUIRED: Activate your private, hosted contact form
+
+The contact form uses Formspree. Your private email address is **not** included anywhere in the website files. Formspree receives your submissions and can notify you at the email address configured privately in your Formspree account.
+
+1. Create a free account at https://formspree.io/ and create a form named `Anna Diaz — Contact`.
+2. Set/verify the destination email **inside your Formspree dashboard only**. Do NOT type it in GitHub, HTML or JavaScript.
+3. Copy the form endpoint, e.g. `https://formspree.io/f/abcdefgh`; the `abcdefgh` portion is your **public form ID**.
+4. In `assets/contact-config.js`, set `formId: "abcdefgh"` (use your actual form ID).
+5. Commit and push your changed file to GitHub. Cloudflare Pages will redeploy automatically.
+6. Open the live `/contact.html`, send a test message, and confirm it appears in your Formspree dashboard and reaches your notifications if enabled. Check spam filtering and any Formspree verification requests.
+
+The form is intentionally disabled until you add your form ID; LinkedIn remains available. It uses a hidden honeypot field and sends messages over HTTPS to Formspree only on submission. No additional analytics or form tracking code is introduced.
+
+**Privacy considerations:** Formspree is a third-party processor, not end-to-end encryption; messages are visible to your Formspree account and subject to Formspree's privacy/retention practices. The site tells visitors what is submitted and links to https://formspree.io/legal/privacy-policy/. Do not ask for sensitive or confidential information. For additional controls, review Formspree spam and retention settings.
+
+**LinkedIn:** The contact page links to https://www.linkedin.com/in/anna-l-diaz/.
+
+### Updating with PowerShell
+
+From the folder containing the updated files, copy all items into your *existing local Git clone*, then run `git add -A`, `git commit -m "Refine Anna Diaz website and contact page"`, and `git push origin main`. Keep the site files at the repository root. No new Cloudflare Pages project is needed.
